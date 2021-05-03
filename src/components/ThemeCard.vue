@@ -27,7 +27,7 @@
           <li>
             <a
               href="https://themes.getbootstrap.com/product-category/admin-dashboard/"
-              >{{ subtitle }}</a
+              >{{ content.subtitle }}</a
             >
           </li>
         </ul>
