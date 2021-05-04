@@ -1,9 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a href="https://themes.getbootstrap.com" class="navbar-brand"
-        >Bootstrap Themes</a
-      >
+      <router-link class="navbar-brand" to="/">Bootstrap Themes</router-link>
       <div class="d-flex ml-auto">
         <button
           class="navbar-toggler"
@@ -109,11 +107,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link"
-              href="https://themes.getbootstrap.com/official-themes"
-              >Why Our Themes?</a
-            >
+            <router-link class="nav-link" to="/Themes">Why Our Themes?</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://themes.getbootstrap.com/guide"
