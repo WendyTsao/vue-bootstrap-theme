@@ -41,7 +41,7 @@
           >
         </p>
         <ul class="rating">
-          <li v-for="i in 5" :class="['rating__item',{'rating__item--active': content.starrate >= i}]" :key="i"></li>
+          <li v-for="i in 5" :class="['rating__item',{ 'rating__item--active': content.starrate >= i }]" :key="i"></li>
         </ul>
       </div>
     </div>
@@ -54,13 +54,11 @@ export default {
     content: {
       type: Object,
       default: {
-        imgUrl:
-          "https://themes.getbootstrap.com/wp-content/uploads/2021/03/thumbnail-540x405.png",
-        livepreviewUrl:
-          "https://themes.getbootstrap.com/preview/?theme_id=86954",
-        title: "Craft – Bootstrap 5 Admin Dashboard Theme",
-        subtitle: "Admin & Dashboard",
-        price: "49.00",
+        imgUrl: "",
+        livepreviewUrl: "",
+        title: "",
+        subtitle: "",
+        price: "",
         starrate: 0,
       },
     },

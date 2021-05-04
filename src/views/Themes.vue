@@ -27,31 +27,12 @@
             </div>
             <div class="container">
               <div class="row align-items-center justify-content-center mb-1 mt-5 mb-md-5 text-center">
-                <div class="col-md-3 col-6 mb-5 mb-md-0 border-right">
-                  <h6 class="mb-1">Average Rating</h6>
-                  <div class="d-flex align-items-center justify-content-center">
-                    <ul class="rating d-inline mb-0 mr-2">
-                      <li class="rating__item rating__item--active"></li>
-                      <li class="rating__item rating__item--active"></li>
-                      <li class="rating__item rating__item--active"></li>
-                      <li class="rating__item rating__item--active"></li>
-                      <li class="rating__item rating__item--active"></li>
-                    </ul>
-                    <p class="fs-13 text-gray-soft d-inline">4.9/5</p>
-                  </div>
-                </div>
-                <div class="col-md-3 col-6 mb-5 mb-md-0 border-right">
-                  <h6 class="mb-1">Our Guarantee</h6>
-                  <p class="fs-13 text-gray-soft">100% money back.</p>
-                </div>
-                <div class="col-md-3 col-6 mb-5 mb-md-0 border-right">
-                  <h6 class="mb-1">Free Updates</h6>
-                  <p class="fs-13 text-gray-soft">Never pay for an update.</p>
-                </div>
-                <div class="col-md-3 col-6 mb-5 mb-md-0">
-                  <h6 class="mb-1">Free Support</h6>
-                  <p class="fs-13 text-gray-soft">6 months included</p>
-                </div>
+                    <TextCard v-for="card in ThemesTextCard" :content="card" :key="card.title">
+                        <ul v-if="card.hasStarrate" class="rating d-inline mb-0 mr-2">
+                            <li v-for="i in 5" class="rating__item rating__item--active" :key="i"> 
+                            </li>
+                        </ul>
+                    </TextCard>
               </div>
 
               <div class="row align-items-center justify-content-between py-4">
@@ -102,9 +83,7 @@
                 </div>
               </div>
 
-              <div
-                class="row align-items-center justify-content-between mt-5 my-lg-5 pt-5"
-              >
+              <div class="row align-items-center justify-content-between mt-5 my-lg-5 pt-5">
                 <div class="col-lg-5 mb-3 mb-lg-5">
                   <h1 class="mb-2 text-bold w-75">
                     Build tools and full documention.
@@ -132,9 +111,7 @@
               </div>
 
               <div class="row align-items-center justify-content-between mb-5 pt-5 mb-lg-3 text-center">
-                <div class="col-sm-4 px-sm-4 pb-5" v-for="icontext in ThemesIconCard" :key="icontext.imgUrl">
-                  <IconCard :content="icontext"></IconCard>
-                </div>
+                  <IconCard :content="icontext" v-for="icontext in ThemesIconCard" :key="icontext.imgUrl" />
               </div>
             </div>
           </section>
@@ -145,10 +122,31 @@
 </template>
 
 <script>
+import TextCard from "../components/TextCard.vue";
 import IconCard from "../components/IconCard.vue";
+
 export default {
-  components: { IconCard },
+  components: { TextCard, IconCard },
   setup() {
+    const ThemesTextCard = [
+      {
+        title: "Average Rating",
+        text: "4.9/5",
+        hasStarrate: true
+      },
+      {
+        title: "Our Guarantee",
+        text: "100% money back.",
+      },
+      {
+        title: "Free Updates",
+        text: "Never pay for an update.",
+      },
+      {
+        title: "Free Support",
+        text: "6 months included",
+      },
+    ];
     const ThemesIconCard = [
       {
         imgUrl:
@@ -172,7 +170,7 @@ export default {
           "Each theme includes all the source and compiled files, making deep customization possible.",
       },
     ];
-    return { starrate, ThemesIconCard };
+    return { ThemesTextCard, ThemesIconCard };
   },
 };
 </script>
