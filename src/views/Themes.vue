@@ -26,9 +26,7 @@
               />
             </div>
             <div class="container">
-              <div
-                class="row align-items-center justify-content-center mb-1 mt-5 mb-md-5 text-center"
-              >
+              <div class="row align-items-center justify-content-center mb-1 mt-5 mb-md-5 text-center">
                 <div class="col-md-3 col-6 mb-5 mb-md-0 border-right">
                   <h6 class="mb-1">Average Rating</h6>
                   <div class="d-flex align-items-center justify-content-center">
@@ -133,38 +131,9 @@
                 </div>
               </div>
 
-              <div
-                class="row align-items-center justify-content-between mb-5 pt-5 mb-lg-3 text-center"
-              >
-                <div class="col-sm-4 px-sm-4 pb-5">
-                  <img
-                    src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/components-icon.svg"
-                  />
-                  <h5 class="my-2 text-bold">Components and examples</h5>
-                  <p class="text-gray-soft">
-                    Each theme features new components built to match
-                    Bootstrap's level of quality and re-usability.
-                  </p>
-                </div>
-                <div class="col-sm-4 px-sm-4 pb-5">
-                  <img
-                    src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/sliders-icon.svg"
-                  />
-                  <h5 class="my-2 text-bold">Tons of variables</h5>
-                  <p class="text-gray-soft">
-                    Themes inherit their style from custom variables, like
-                    Bootstrap, so basic customization is easy.
-                  </p>
-                </div>
-                <div class="col-sm-4 px-sm-4 pb-5">
-                  <img
-                    src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/wrenches-icon.svg"
-                  />
-                  <h5 class="my-2 text-bold">Source files</h5>
-                  <p class="text-gray-soft">
-                    Each theme includes all the source and compiled files,
-                    making deep customization possible.
-                  </p>
+              <div class="row align-items-center justify-content-between mb-5 pt-5 mb-lg-3 text-center">
+                <div class="col-sm-4 px-sm-4 pb-5" v-for="icontext in ThemesIconCard" :key="icontext.imgUrl">
+                  <IconCard :content="icontext"></IconCard>
                 </div>
               </div>
             </div>
@@ -176,7 +145,36 @@
 </template>
 
 <script>
-export default {};
+import IconCard from "../components/IconCard.vue";
+export default {
+  components: { IconCard },
+  setup() {
+    const ThemesIconCard = [
+      {
+        imgUrl:
+          "https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/components-icon.svg",
+        title: "Components and examples",
+        text:
+          "Each theme features new components built to match Bootstrap's level ofquality and re-usability.",
+      },
+      {
+        imgUrl:
+          "https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/sliders-icon.svg",
+        title: "Tons of variables",
+        text:
+          "Themes inherit their style from custom variables, like Bootstrap, so basic customization is easy.",
+      },
+      {
+        imgUrl:
+          "https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/wrenches-icon.svg",
+        title: "Source files",
+        text:
+          "Each theme includes all the source and compiled files, making deep customization possible.",
+      },
+    ];
+    return { starrate, ThemesIconCard };
+  },
+};
 </script>
 
 <style>
