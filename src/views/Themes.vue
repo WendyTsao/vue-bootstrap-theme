@@ -1,5 +1,5 @@
 <template>
-  <main id="main" class="site-main main">
+  <main id="main" class="site-main main over-hidden">
     <section class="section">
       <div class="container">
         <div class="row">
@@ -16,18 +16,16 @@
           </section>
           <section class="section pt-3 official-themes-page pb-0">
             <div class="screenshots-masonry">
-              <img
-                class="d-none d-lg-block"
-                src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/theme-masonry.jpg"
-              />
-              <img
-                class="d-block d-lg-none"
-                src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/theme-masonry-mobile.jpg"
-              />
+              <img class="d-none d-lg-block"
+                src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/theme-masonry.jpg" />
+              <img class="d-block d-lg-none"
+                src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/theme-masonry-mobile.jpg" />
             </div>
             <div class="container">
               <div class="row align-items-center justify-content-center mb-1 mt-5 mb-md-5 text-center">
-                    <TextCard v-for="card in ThemesTextCard" :content="card" :key="card.title">
+                    <TextCard v-for="(card, index) in ThemesTextCard" 
+                    :class="{'border-right': index < ThemesTextCard.length - 1}" 
+                    :content="card" :key="card.title">
                         <ul v-if="card.hasStarrate" class="rating d-inline mb-0 mr-2">
                             <li v-for="i in 5" class="rating__item rating__item--active" :key="i"> 
                             </li>
@@ -175,5 +173,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+    .over-hidden{
+        overflow: hidden;
+    }
 </style>
