@@ -33,86 +33,21 @@
                     </TextCard>
               </div>
 
-            <GraphicArea v-for="(graphic, index) in ThemesGraphicArea" 
-                        :class="{'flex-row-reverse': index % 2 === 1}"
-                        :content="graphic" :key="graphic.imgUrl">
-                <a v-if="graphic.hasButton" class="btn btn-brand" href="https://bootstrap-themes.github.io/dashboard/docs/">
-                    Explore the Dashboard docs
-                </a>
-            </GraphicArea>
-              <!-- <div class="row align-items-center justify-content-between py-4">
-                <div class="col-xl-5 col-lg-6 pt-4">
-                  <h1 class="mb-2 text-bold w-75">
-                    Built as frameworks from the ground up.
-                  </h1>
-                  <p class="fs-16 text-gray-soft">
-                    Each theme is architected as an extension of Bootstrap,
-                    built for a specific set of problems. This means not only
-                    extending the base components of Bootstrap, but also adding
-                    completely new components, utilities, and plugins.
-                  </p>
-                </div>
-                <div class="col-lg-12 mb-5">
-                  <img
-                    class="img-fluid mx-auto framework-progression-graphic d-none d-lg-block"
-                    src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/framework-progression.png"
-                    alt=""
-                  />
-                  <img
-                    class="img-fluid mx-auto framework-progression-graphic d-block d-lg-none"
-                    src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/framework-progression-mobile.jpg"
-                    alt=""
-                  />
-                </div>
-              </div> -->
-
-              <!-- <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6 mt-5 order-2 order-lg-1">
-                  <img
-                    class="img-fluid mx-auto d-block"
-                    src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/review-process.svg"
-                    alt=""
-                  />
-                </div>
-                <div class="col-lg-5 order-1 order-lg-2">
-                  <h1 class="mb-2 text-bold w-75">
-                    Every theme gets reviewed by us.
-                  </h1>
-                  <p class="fs-16 text-gray-soft">
-                    The Boostrap team reviews every new theme and update against
-                    a set of guidelines we wrote. These cover tons of factors
-                    including design, component flexibility, class naming,
-                    directory structure, build tooling, plugin reusability…the
-                    list goes on and on.
-                  </p>
-                </div>
-              </div> -->
-
-              <!-- <div class="row align-items-center justify-content-between mt-5 my-lg-5 pt-5">
-                <div class="col-lg-5 mb-3 mb-lg-5">
-                  <h1 class="mb-2 text-bold w-75">
-                    Build tools and full documention.
-                  </h1>
-                  <p class="fs-16 text-gray-soft">
-                    Components, plugins, and build tools are all thoroughly
-                    documented with live examples and markup for easier use and
-                    customization—just like Bootstrap itself. Not comfortable
-                    diving that deep? No worries, you just use the compiled CSS
-                    and examples pages!
-                  </p>
-                  <a class="btn btn-brand" href="https://bootstrap-themes.github.io/dashboard/docs/">
-                    Explore the Dashboard docs
+             <div v-for="(graphic, index) in ThemesGraphicArea" 
+                  :class="['row align-items-center justify-content-between py-4', 
+                  {'flex-row-reverse': index % 2 === 1}]"
+                  :key="graphic.imgUrl">
+                <Text :title="graphic.title" :text="graphic.text">
+                  <a v-if="graphic.hasButton" class="btn btn-brand" href="https://bootstrap-themes.github.io/dashboard/docs/">
+                      Explore the Dashboard docs
                   </a>
-                </div>
-                <div class="col-lg-6 mb-4 mt-4">
-                  <img
-                    class="img-fluid mx-auto d-block"
-                    src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/terminal.jpg"
-                    alt=""
-                  />
-                </div>
-              </div> -->
+                </Text>
 
+                <Image :class="index === 0 ? 'col-lg-12':'col-lg-6'"
+                      :imgUrl="graphic.imgUrl" 
+                      :mobileImgUrl="graphic.mobileImgUrl"></Image>
+             </div>
+            
               <div class="row align-items-center justify-content-between mb-5 pt-5 mb-lg-3 text-center">
                   <IconCard :content="icontext" v-for="icontext in ThemesIconCard" :key="icontext.imgUrl" />
               </div>
@@ -127,13 +62,13 @@
 <script>
 import TextCard from "../components/TextCard.vue";
 import IconCard from "../components/IconCard.vue";
-import GraphicArea from '../components/ GraphicArea.vue';
-import { onMounted } from "vue";
+import Text from '../components/Text.vue';
+import Image from '../components/Image.vue';
 
 export default {
-  components: { TextCard, IconCard, GraphicArea },
+  components: { TextCard, IconCard, Text, Image },
   setup() {
-      const ThemesTextCard = [
+    const ThemesTextCard = [
       {
         title: "Average Rating",
         text: "4.9/5",
@@ -175,31 +110,19 @@ export default {
         text: "Each theme is architected as an extension of Bootstrap, built for a specific set of problems. This means not only extending the base components of Bootstrap, but also adding completely new components, utilities, and plugins.",
         imgUrl:"https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/framework-progression.png",
         mobileImgUrl:"https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/framework-progression-mobile.jpg",
-        imgClass:'col-lg-12'
       },
       {
         title: "Every theme gets reviewed by us.",
         text: "The Boostrap team reviews every new theme and update against a set of guidelines we wrote. These cover tons of factors including design, component flexibility, class naming, directory structure, build tooling, plugin reusability…the list goes on and on.",
         imgUrl: "https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/review-process.svg",
-        imgClass:'col-lg-6'
       },
       {
         title: "Build tools and full documention.",
         text: "Components, plugins, and build tools are all thoroughly documented with live examples and markup for easier use and customization—just like Bootstrap itself. Not comfortable diving that deep? No worries, you just use the compiled CSS and examples pages!",
         imgUrl: "https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/official-themes/terminal.jpg",
-        imgClass:'col-lg-6',
         hasButton: true,
       }
     ];
-
-    // dirty
-    // window.addEventListener('resize', () =>{
-    //     location.reload();
-    // });
-    onMounted(()=>{
-        console.log('onMounted');
-    })
-
 
     return { ThemesTextCard, ThemesIconCard, ThemesGraphicArea };
   },
