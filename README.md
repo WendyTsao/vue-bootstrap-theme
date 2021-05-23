@@ -1,4 +1,8 @@
-# practice01
+# Bootstrap-theme vue practice
+
+## 💡 [DEMO](https://bootstrap-vue-portfolio.herokuapp.com/)
+
+👉 Practice link: https://themes.getbootstrap.com/
 
 ## Project setup
 ```
